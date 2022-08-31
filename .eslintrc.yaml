@@ -1,0 +1,34 @@
+env:
+  browser: true
+  es2022: true
+  node: true
+extends:
+  - plugin:react/recommended
+  - airbnb
+  - prettier
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: latest
+plugins:
+  - react
+rules:
+  import/no-unresolved: 0
+  allowIndentationTabs: 0
+  no-tabs: 0
+  react/prop-types: 0
+  react/react-in-jsx-scope: 0
+  jsx-a11y/anchor-has-content:
+    - 2
+    - components:
+        - Anchor
+  react/jsx-filename-extension:
+    - 1
+    - allow: as-needed
+  no-param-reassign: 0
+  no-underscore-dangle: 0
+  import/no-extraneous-dependencies: 0
+ignorePatterns:
+  - node_modules/
+  - public/
+  - dist/
