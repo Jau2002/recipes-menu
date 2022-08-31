@@ -1,16 +1,28 @@
 const { DataTypes } = require('sequelize');
 
-const recipeTable = (sequelize) => {
-	// sequelize.define(
-	// 	'recipe',
-	// 	{
-	// 		ID: { type: DataTypes.INTEGER, primaryKey: true },
-	// 		name: { type: DataTypes.STRING, allowNull: false, unique: true },
-	// 		summary: { type: DataTypes.STRING, allowNull: false },
-	// 		healthScore: { type: DataTypes.FLOAT, defaultValue: 3.0 },
-	// 	},
-	// 	{ freezeTableName: true, timestamps: false },
-	// );
+module.exports = (sequelize) => {
+	sequelize.define(
+		'recipe',
+		{
+			id: {
+				type: DataTypes.UUID,
+				primaryKey: true,
+				allowNull: false,
+				default: DataTypes.UUIDV4,
+			},
+			name: {
+				type: DataTypes.STRING,
+				allowNull: false,
+				unique: true,
+			},
+			summary: {
+				type: DataTypes.TEXT,
+				allowNull: false,
+			},
+			healthScore: {
+				type: DataTypes.FLOAT,
+			},
+		},
+		{ freezeTableName: true, timestamps: false },
+	);
 };
-
-module.exports = recipeTable;

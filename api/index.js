@@ -20,11 +20,11 @@
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 console.clear();
-const server = require('./src/server.js');
-const { conn } = require('./src/db.js');
+const server = require('./src/server');
+const { conn } = require('./src/db');
 
-conn.sync({ force: true }).then(() => {
-	server.listen(3001, () => {
-		console.log(`http://localhost:3001/`);
-	});
-});
+const connection = async () => {
+	const reload = await conn.sync({ force: true });
+	return reload;
+};
+connection(server.listen(3001, () => console.log(`http://localhost:3001/`)));

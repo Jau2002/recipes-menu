@@ -59,7 +59,7 @@ DB_PASSWORD=passwordDePostgres
 DB_HOST=localhost
 ```
 
-  68Reemplazar `usuarioDePostGres` y `passwordDePostgres` con tus propias credenciales para conectarte a PostGres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
+68Reemplazar `usuarioDePostGres` y `passwordDePostgres` con tus propias credenciales para conectarte a PostGres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
 
 Adicionalmente será necesario que creen desde sql una base de datos llamada `food`
 
@@ -142,13 +142,13 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterisco deben ser obligatorias):
 
-- [ ] Receta con las siguientes propiedades:
+- [x] Receta con las siguientes propiedades:
   - ID: \*
   - Nombre \*
   - Resumen del plato \*
   - Nivel de "comida saludable" (health score)
   - Paso a paso
-- [ ] Tipo de dieta con las siguientes propiedades:
+- [x] Tipo de dieta con las siguientes propiedades:
   - ID
   - Nombre
 
