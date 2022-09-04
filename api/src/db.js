@@ -37,6 +37,6 @@ Diet.belongsToMany(Recipe, { through: 'Recipe_diet' });
 Recipe.belongsToMany(Diet, { through: 'Recipe_diet' });
 
 module.exports = {
-	...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-	conn: sequelize, // para importar la conexión { conn } = require('./db.js');
+	...sequelize.models,
+	conn: sequelize,
 };

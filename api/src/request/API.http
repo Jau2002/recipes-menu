@@ -1,0 +1,12 @@
+@API_REST_CLIENT=https://api.spoonacular.com/recipes/
+@API_KEY=apiKey={{$dotenv API_KEY_REST}}
+@COMPLEMENTS=addRecipeInformation=true&number=100
+
+### Solicit call all recipes
+GET {{API_REST_CLIENT}}complexSearch
+    ?{{API_KEY}}
+    &{{COMPLEMENTS}} HTTP/1.1
+
+### Query fetch first petition
+GET {{API_REST_CLIENT}}/716426/information
+    ?{{API_KEY}} HTTP/1.1

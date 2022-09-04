@@ -107,7 +107,7 @@ jobs:
       - name: Eslint Perse
         run: pnpm run lint
   build:
-    needs: [format, eslint]
+    needs: [prettier, eslint]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code repository

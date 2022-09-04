@@ -1,0 +1,31 @@
+@PORT=3001
+
+@HOST=http://localhost
+
+@URL={{HOST}}:{{PORT}} 
+
+# Recipe
+
+### Read request all dishes
+GET {{URL}}/recipes HTTP/1.1
+
+### Read feltre petition for id
+GET {{URL}}/recipes/716426 HTTP/1.1
+
+### Create new recipe
+POST {{URL}}/recipes/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "",
+  "summary": "",
+	"healthScore": "",
+	"step": "",
+	"img": "",
+	"diets": "",
+}
+
+# Diet
+
+### Read request all diets
+GET {{URL}}/diet/ HTTP/1.1

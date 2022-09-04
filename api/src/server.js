@@ -13,7 +13,7 @@ server.use(express.urlencoded({ extended: true, limit: '50mb' }));
 server.use(express.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
-server.use((req, res, next) => {
+server.use((_, res, next) => {
 	res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
 	res.header('Access-Control-Allow-Credentials', 'true');
 	res.header(
@@ -26,8 +26,7 @@ server.use((req, res, next) => {
 
 server.use('/', routes);
 
-// Error catching endWare.
-server.use((err, _, res) => {
+server.use((err, _req, res, _next) => {
 	const status = err.status || 500;
 	const message = err.message || err;
 	console.error(err);
