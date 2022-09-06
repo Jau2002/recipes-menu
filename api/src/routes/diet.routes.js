@@ -1,9 +1,11 @@
 const { Router } = require('express');
 const { Diet } = require('../db');
+const { NOT_FOUND } = require('../services/protocol');
 
 const routerDiets = Router();
 
 routerDiets.get('/', async (_, res) => {
+	const allDiets = await Diet.findAll();
 	const diets = [
 		'gluten free',
 		'dairy free',
@@ -24,10 +26,9 @@ routerDiets.get('/', async (_, res) => {
 				},
 			});
 		});
-		const allDiets = await Diet.findAll();
 		res.send(allDiets);
 	} catch (err) {
-		throw new Error(err);
+		res.status(NOT_FOUND).send({ message: err.message });
 	}
 });
 

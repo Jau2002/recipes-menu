@@ -56,13 +56,13 @@ routerRecipes.post('/', async (req, res) => {
 			steps,
 			img,
 		});
-		const dietsDb = await Diet.findALl({
+		const dietsDb = await Diet.findAll({
 			where: {
 				name: diets,
 			},
 		});
 		newRecipe.addDiet(dietsDb);
-		return res.status(CREATED).send({ message: 'Diet Created Successfully' });
+		return res.status(CREATED).send({ message: 'Diet created successfully' });
 	} catch (err) {
 		return res.status(UNPROCESSABLE_ENTITY).send({ message: err.message });
 	}

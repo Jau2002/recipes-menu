@@ -15,7 +15,6 @@ async function allDataApi() {
 		steps: d.analyzedInstructions[0]?.step?.map((s) => s.step),
 		img: d.image,
 		diets: d.diets?.map((d) => d),
-		cuisines: d.cuisines?.map((c) => c),
 		types: d.dishTypes?.map((t) => t),
 	}));
 	return captureData;
@@ -35,9 +34,7 @@ async function Database() {
 		steps: r.steps,
 		img: r.image,
 		diets: r.diets?.map((d) => d.name),
-		cuisines: r.cuisines?.map((c) => c),
 		types: r.dishTypes?.map((d) => d.name),
-		createInDb: r.createInDb,
 	}));
 	return mapDataDb;
 }

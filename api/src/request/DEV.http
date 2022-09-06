@@ -9,10 +9,10 @@
 ### Read request all dishes
 GET {{URL}}/recipes HTTP/1.1
 
-### Read query return 409 not name
+### Read name filter by query
 GET {{URL}}/recipes?name=Cauliflower HTTP/1.1
 
-### Read feltre petition for id
+### Read filter petition for id
 GET {{URL}}/recipes/716426 HTTP/1.1
 
 ### Create new recipe
@@ -20,12 +20,11 @@ POST {{URL}}/recipes HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "mi plato",
-  "summary": "cotiene de todo",
+  "name": "my dish",
+  "summary": "a bit of everything",
 	"healthScore": 3,
-	"step": ["primero prepara una cocina", "luego cocina"],
-	"img": "www.unaImagen.com",
-	"diets": ["Vegana", "vegetalina", "parmesana"],
+	"step": ["first have a kitchen", "know how to cook"],
+	"diets": ["gluten free", "dairy free", "paleolithic"]
 }
 
 # Diet

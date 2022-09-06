@@ -8,12 +8,17 @@ module.exports = (sequelize) => {
 				type: DataTypes.UUID,
 				primaryKey: true,
 				allowNull: false,
-				default: DataTypes.UUIDV4,
+				defaultValue: DataTypes.UUIDV4,
+			},
+			img: {
+				type: DataTypes.TEXT,
+				allowNull: false,
+				defaultValue:
+					'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/apps-recetas-cocina-aprender-esquire-recetas-vegetarianas-1522956381.jpg?crop=1xw:1xh;center,top&resize=980:*',
 			},
 			name: {
 				type: DataTypes.STRING,
 				allowNull: false,
-				unique: true,
 			},
 			summary: {
 				type: DataTypes.TEXT,
@@ -21,6 +26,9 @@ module.exports = (sequelize) => {
 			},
 			healthScore: {
 				type: DataTypes.FLOAT,
+			},
+			steps: {
+				type: DataTypes.ARRAY(DataTypes.STRING),
 			},
 		},
 		{ freezeTableName: true, timestamps: false },
