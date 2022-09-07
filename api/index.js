@@ -19,7 +19,7 @@
                      `=---='
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-console.clear();
+console.clear(); // eslint-disable-line no-console
 const server = require('./src/server');
 const { conn } = require('./src/db');
 
@@ -28,4 +28,4 @@ const connection = async () => {
 	return reload;
 };
 
-connection(server.listen(3001, () => console.log(`http://localhost:3001/`)));
+connection(server.listen(3001, () => console.log(`http://localhost:3001/`))); // eslint-disable-line no-console

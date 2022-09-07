@@ -23,7 +23,7 @@ server.use((_, res, next) => {
 	res.header('Access-Control-Allow-Credentials', 'true');
 	res.header(
 		'Access-Control-Allow-Headers',
-		'Origin, X-Requested-With, Content-Type, Accept',
+		'Origin, X-Requested-With, Content-Type, Accept'
 	);
 	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
 	next();
@@ -34,7 +34,7 @@ server.use('/', routes);
 server.use((err, _, res, next) => {
 	const status = err.status || 500;
 	const message = err.message || err;
-	console.error(err);
+	console.error(err); // eslint-disable-line no-console
 	res.status(status).send(message);
 	next();
 });
