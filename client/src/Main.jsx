@@ -1,6 +1,7 @@
 import { useRoutes } from 'react-router-dom';
+import Dishes from './components/Dishes';
 import Landing from './components/Landing';
-import Navbar from './components/Navbar';
+import Nav from './components/Nav';
 import './styles/Main.css';
 
 function Main() {
@@ -11,7 +12,7 @@ function Main() {
 		},
 		{
 			path: '/home',
-			element: <Navbar />,
+			element: [<Nav />, <Dishes />],
 		},
 	]);
 	return App;
