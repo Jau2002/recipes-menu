@@ -39,7 +39,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      - name: Install dependencies
+      - name: Install dependencies --frozen-lockfile
         run: pnpm install
   prettier:
     needs: [setup]
@@ -72,7 +72,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Perf format
         run: pnpm run format
   eslint:
@@ -106,7 +106,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Eslint Perse
         run: pnpm run lint
   build:
@@ -140,7 +140,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Builder
         if: ${{ github.event_name == 'push' }}
         run: pnpm -r run build

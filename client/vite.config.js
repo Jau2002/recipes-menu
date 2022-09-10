@@ -11,6 +11,7 @@ export default ({ mode }) => {
 		...loadEnv(mode, process.cwd()),
 	};
 	return defineConfig({
+		publicDir: 'assets',
 		base: '/',
 		plugins: [react()],
 		server: {

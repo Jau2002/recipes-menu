@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import pageLanding from '../../public/page_landing.jpg';
 
 function Landing() {
 	return (
@@ -9,7 +10,7 @@ function Landing() {
 				</Link>
 			</aside>
 			<img
-				src='../../public/page_landing.jpg'
+				src={pageLanding}
 				alt='landing'
 			/>
 		</main>

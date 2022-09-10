@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_RECIPES } from '../constants';
+import { GET_ALL_RECIPES, GET_RECIPE_BY_NAME } from '../constants';
 
 function getAllRecipes() {
 	return async (dispatch) => {
@@ -8,6 +8,17 @@ function getAllRecipes() {
 	};
 }
 
-const ar = 0;
+function getRecipeByName(name) {
+	return async (dispatch) => {
+		const response = await axios.get(
+			`http://localhost:3001/recipes?name=${name}`
+		);
+		try {
+			return dispatch({ type: GET_RECIPE_BY_NAME, payload: response.data });
+		} catch (err) {
+			throw new Error(err);
+		}
+	};
+}
 
-export { getAllRecipes, ar };
+export { getAllRecipes, getRecipeByName };

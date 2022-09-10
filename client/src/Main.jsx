@@ -1,5 +1,5 @@
 import { useRoutes } from 'react-router-dom';
-import Dishes from './components/Dishes';
+import Home from './components/Home';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
 import './styles/Main.css';
@@ -12,7 +12,7 @@ function Main() {
 		},
 		{
 			path: '/home',
-			element: [<Nav />, <Dishes />],
+			element: [<Nav />, <Home />],
 		},
 	]);
 	return App;
