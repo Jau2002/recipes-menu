@@ -2,14 +2,13 @@ import { NavLink } from 'react-router-dom';
 import useSearch from '../hooks/useSearch';
 
 function Nav() {
-	const { search, handleOnChange, handleOnDisabled, onPush } = useSearch();
+	const { search, handleOnChange, onPush } = useSearch();
 
 	return (
 		<nav>
 			<div>
 				<NavLink to='/'>Home</NavLink>
 				<NavLink to='/recipes'>Create dish</NavLink>
-				<NavLink to='/About'>About</NavLink>
 			</div>
 			<form onSubmit={onPush}>
 				<input
@@ -20,7 +19,7 @@ function Nav() {
 				/>
 				<button
 					type='submit'
-					disabled={handleOnDisabled}
+					disabled={!search.trim().length}
 				>
 					Search
 				</button>

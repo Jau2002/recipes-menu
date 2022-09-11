@@ -21,8 +21,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.14.0
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
       - name: Setup Pnpm
         uses: pnpm/action-setup@v2.2.2
         with:
@@ -39,8 +37,8 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      - name: Install dependencies --frozen-lockfile
-        run: pnpm install
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
   prettier:
     needs: [setup]
     runs-on: ubuntu-22.04
@@ -53,8 +51,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.14.0
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
       - name: Setup Pnpm
         uses: pnpm/action-setup@v2.2.2
         with:
@@ -86,8 +82,6 @@ jobs:
       - name: Add Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.14.0
-          cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
       - name: Setup Pnpm
         uses: pnpm/action-setup@v2.2.2
@@ -121,8 +115,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.14.0
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
       - name: Setup Pnpm
         uses: pnpm/action-setup@v2.2.2
         with:

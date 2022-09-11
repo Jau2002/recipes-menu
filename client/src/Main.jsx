@@ -1,4 +1,5 @@
 import { useRoutes } from 'react-router-dom';
+import Detail from './components/Detail';
 import Home from './components/Home';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
@@ -13,6 +14,10 @@ function Main() {
 		{
 			path: '/home',
 			element: [<Nav />, <Home />],
+		},
+		{
+			path: '/recipes/:id',
+			element: <Detail />,
 		},
 	]);
 	return App;

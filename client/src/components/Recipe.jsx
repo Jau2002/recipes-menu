@@ -8,11 +8,11 @@ function Recipe({ name, diets, img, healthScore }) {
 				/>
 			</div>
 			<div>
-				<h3>{name}</h3>
+				<h2>{name}</h2>
 				{diets.map((diet, index) => (
 					<p key={index}>{diet}</p>
 				))}
-				<h4>Health Score: {healthScore} %</h4>
+				<h3>Health Score: {healthScore} %</h3>
 			</div>
 		</article>
 	);

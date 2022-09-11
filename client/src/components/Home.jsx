@@ -1,23 +1,31 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import preLoader from '../../public/preloader.gif';
 import { getAllRecipes } from '../redux/actions';
 import { selectRecipes } from '../redux/constants';
+import Loader from './Loader';
+import Page from './Page';
 import Recipe from './Recipe';
 
 function Home() {
 	const dispatch = useDispatch();
 
-	dispatch(selectRecipes);
-
 	useEffect(() => {
 		dispatch(getAllRecipes());
 	}, [dispatch]);
 
+	dispatch(selectRecipes);
+
 	const dishes = useSelector(selectRecipes);
 
 	const [currentPage, setCurrentPage] = useState(1);
+
+	const [isActive, setActive] = useState('');
+
+	const handleOnClick = (pageNumber) => {
+		setCurrentPage(pageNumber);
+		setActive(pageNumber);
+	};
 
 	const allShowOnPage = 9;
 
@@ -27,25 +35,16 @@ function Home() {
 
 	const dishesAllShow = dishes.slice(firstPage, lastPage);
 
-	const handleOnClick = (pageNumber) => setCurrentPage(pageNumber);
-
-	const numPages = [];
-
-	for (let i = 1; i <= Math.ceil(dishes.length / allShowOnPage); i++) {
-		numPages.push(i);
-	}
-
 	return (
 		<>
 			<section>
 				{dishesAllShow.length ? (
 					dishesAllShow.map((d) => (
 						<Link
-							to={`/recipes/${d.id}`}
 							key={d.id}
+							to={`/recipes/${d.id}`}
 						>
 							<Recipe
-								id={d.id}
 								name={d.name}
 								diets={d.diets}
 								img={d.img}
@@ -54,26 +53,15 @@ function Home() {
 						</Link>
 					))
 				) : (
-					<img
-						src={preLoader}
-						alt='preLoader'
-					/>
+					<Loader />
 				)}
 			</section>
-			<footer>
-				<ul>
-					{numPages?.map((num) => (
-						<li>
-							<button
-								type='button'
-								onClick={() => handleOnClick(num)}
-							>
-								{num}
-							</button>
-						</li>
-					))}
-				</ul>
-			</footer>
+			<Page
+				isActive={isActive}
+				allShowOnPage={allShowOnPage}
+				dishes={dishes.length}
+				handleOnClick={handleOnClick}
+			/>
 		</>
 	);
 }
