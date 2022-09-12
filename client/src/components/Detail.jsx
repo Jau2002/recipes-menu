@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getRecipeDetail } from '../redux/actions';
 import { selectDetails } from '../redux/constants';
 import Loader from './Loader';
@@ -18,9 +18,6 @@ function Detail() {
 
 	return (
 		<header>
-			<Link to='/home'>
-				<button type='button'>Home</button>
-			</Link>
 			{detail.length ? (
 				<div>
 					<div>
@@ -32,7 +29,7 @@ function Detail() {
 							alt={detail[0].name}
 						/>
 						<div>
-							<h3>Diets:</h3>
+							<h3>Diets</h3>
 							<h4>
 								{detail[0].diets
 									? detail[0].diets.map((d) => `${d}, `)
@@ -40,7 +37,7 @@ function Detail() {
 							</h4>
 						</div>
 						<div>
-							<h3>Dish types:</h3>
+							<h3>Dish types</h3>
 							<h4>
 								{detail[0].types
 									? detail[0].types.map((t) => `${t}, `)
@@ -55,10 +52,10 @@ function Detail() {
 						</h4>
 					</div>
 					<div>
-						<h4>healthScore: {detail[0].healthScore}</h4>
+						<h4>Health score: {detail[0].healthScore}%</h4>
 					</div>
 					<div>
-						<h3>Steps:</h3>
+						<h3>Steps</h3>
 						<h4>
 							{detail[0].steps
 								? detail[0].steps.map((s) => s)

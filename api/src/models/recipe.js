@@ -13,8 +13,7 @@ module.exports = (sequelize) => {
 			img: {
 				type: DataTypes.TEXT,
 				allowNull: false,
-				defaultValue:
-					'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/apps-recetas-cocina-aprender-esquire-recetas-vegetarianas-1522956381.jpg?crop=1xw:1xh;center,top&resize=980:*',
+				defaultValue: 'https://spoonacular.com/recipeImages/635350-240x150.jpg',
 			},
 			name: {
 				type: DataTypes.STRING,
@@ -26,11 +25,14 @@ module.exports = (sequelize) => {
 			},
 			healthScore: {
 				type: DataTypes.FLOAT,
+				allowNull: false,
+				defaultValue: 0,
 			},
 			steps: {
-				type: DataTypes.ARRAY(DataTypes.STRING),
+				type: DataTypes.STRING,
+				allowNull: false,
 			},
 		},
-		{ freezeTableName: true, timestamps: false },
+		{ freezeTableName: true, timestamps: false }
 	);
 };

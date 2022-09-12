@@ -12,7 +12,7 @@ function Recipe({ name, diets, img, healthScore }) {
 				{diets.map((diet, index) => (
 					<p key={index}>{diet}</p>
 				))}
-				<h3>Health Score: {healthScore} %</h3>
+				<h3>Health score: {healthScore}%</h3>
 			</div>
 		</article>
 	);

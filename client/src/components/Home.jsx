@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllRecipes } from '../redux/actions';
+import { getAllDiets, getAllRecipes } from '../redux/actions';
 import { selectRecipes } from '../redux/constants';
 import Loader from './Loader';
 import Page from './Page';
@@ -12,6 +12,7 @@ function Home() {
 
 	useEffect(() => {
 		dispatch(getAllRecipes());
+		dispatch(getAllDiets());
 	}, [dispatch]);
 
 	dispatch(selectRecipes);
@@ -39,16 +40,16 @@ function Home() {
 		<>
 			<section>
 				{dishesAllShow.length ? (
-					dishesAllShow.map((d) => (
+					dishesAllShow.map(({ id, name, diets, img, healthScore }) => (
 						<Link
-							key={d.id}
-							to={`/recipes/${d.id}`}
+							key={id}
+							to={`/recipes/${id}`}
 						>
 							<Recipe
-								name={d.name}
-								diets={d.diets}
-								img={d.img}
-								healthScore={d.healthScore}
+								name={name}
+								diets={diets}
+								img={img}
+								healthScore={healthScore}
 							/>
 						</Link>
 					))

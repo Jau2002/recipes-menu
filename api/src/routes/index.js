@@ -4,7 +4,7 @@ const routerRecipes = require('./recipe.routes');
 
 const router = Router();
 
-router.use('/diet', routerDiets);
+router.use('/diets', routerDiets);
 
 router.use('/recipes', routerRecipes);
 

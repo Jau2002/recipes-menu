@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+	GET_ALL_DIETS,
 	GET_ALL_RECIPES,
 	GET_RECIPE_BY_NAME,
 	GET_RECIPE_DETAIL,
@@ -36,4 +37,24 @@ function getRecipeDetail(id) {
 	};
 }
 
-export { getAllRecipes, getRecipeByName, getRecipeDetail };
+function postRecipe(payload) {
+	return async () => {
+		const create = await axios.post('http://localhost:3001/recipes', payload);
+		return create;
+	};
+}
+
+function getAllDiets() {
+	return async (dispatch) => {
+		const response = await axios.get('http://localhost:3001/diets');
+		return dispatch({ type: GET_ALL_DIETS, payload: response.data });
+	};
+}
+
+export {
+	getAllRecipes,
+	getRecipeByName,
+	getRecipeDetail,
+	postRecipe,
+	getAllDiets,
+};
