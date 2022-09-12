@@ -10,26 +10,31 @@ module.exports = (sequelize) => {
 				allowNull: false,
 				defaultValue: DataTypes.UUIDV4,
 			},
+
 			img: {
-				type: DataTypes.TEXT,
+				type: DataTypes.CHAR(255),
 				allowNull: false,
 				defaultValue: 'https://spoonacular.com/recipeImages/635350-240x150.jpg',
 			},
+
 			name: {
-				type: DataTypes.STRING,
+				type: DataTypes.STRING(128),
 				allowNull: false,
 			},
+
 			summary: {
 				type: DataTypes.TEXT,
 				allowNull: false,
 			},
+
 			healthScore: {
-				type: DataTypes.FLOAT,
+				type: DataTypes.SMALLINT,
 				allowNull: false,
 				defaultValue: 0,
 			},
+
 			steps: {
-				type: DataTypes.STRING,
+				type: DataTypes.CHAR(255),
 				allowNull: false,
 			},
 		},

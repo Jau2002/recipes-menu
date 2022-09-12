@@ -1,23 +1,28 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRecipeByName } from '../redux/actions';
+import { getRecipeByName } from '../actions';
 
 function useSearch() {
-	const dispatch = useDispatch();
-
 	const [search, setSearch] = useState('');
 
-	const handleOnChange = (e) => {
-		setSearch(([e.target.name] = e.target.value));
-		dispatch(getRecipeByName(search));
+	const handleOnChange = (event) => {
+		setSearch(event.target.value);
 	};
 
-	const onPush = (e) => {
-		e.preventDefault();
+	const dispatch = useDispatch();
+
+	const onPush = (event) => {
+		event.preventDefault();
+		dispatch(getRecipeByName(search));
 		setSearch('');
 	};
 
-	return { search, handleOnChange, onPush };
+	const handleOnReset = (event) => {
+		event.preventDefault();
+		window.location.reload();
+	};
+
+	return { search, handleOnChange, onPush, handleOnReset };
 }
 
 export default useSearch;

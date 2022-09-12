@@ -1,12 +1,13 @@
 const axios = require('axios').default;
 const { Recipe, Diet } = require('../db');
 
-const { API_KEY_2 } = process.env;
+const { API_KEY_0 } = process.env;
 
-async function allDataApi() {
+async function getAllDataApi() {
 	const response = await axios.get(
-		`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_2}&addRecipeInformation=true&number=100`
+		`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_0}&addRecipeInformation=true&number=100`
 	);
+
 	const captureData = response.data.results.map((d) => ({
 		id: d.id,
 		name: d.title,
@@ -17,15 +18,13 @@ async function allDataApi() {
 		diets: d.diets?.map((d) => d),
 		types: d.dishTypes?.map((t) => t),
 	}));
+
 	return captureData;
 }
 
 async function Database() {
-	const tableDiets = await Recipe.findAll({
-		includes: {
-			model: Diet,
-		},
-	});
+	const tableDiets = await Recipe.findAll({ includes: { model: Diet } });
+
 	const mapDataDb = tableDiets?.map((r) => ({
 		id: r.id,
 		name: r.name,
@@ -36,13 +35,17 @@ async function Database() {
 		diets: r.diets?.map((d) => d.name),
 		types: r.dishTypes?.map((d) => d.name),
 	}));
+
 	return mapDataDb;
 }
 
 const allRecipes = async () => {
-	const api = await allDataApi();
+	const api = await getAllDataApi();
+
 	const db = await Database();
+
 	const allData = api.concat(db);
+
 	return allData;
 };
 

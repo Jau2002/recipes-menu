@@ -13,7 +13,7 @@
 		"pnpm": ">=7"
 	},
 	"scripts": {
-		"format": "prettier --debug-check \"**/**/*.{js,jsx}\" --config \".prettierrc.yaml\" -l --no-editorconfig --no-plugin-search",
+		"format": "prettier --config \".prettierrc.yaml\" -l --no-editorconfig -w \"**/**/*.{js,jsx}\" -u",
 		"lint": "eslint -c \".eslintrc.yaml\" --fix \"**/**/*.{js,jsx}\" --color"
 	},
 	"repository": {

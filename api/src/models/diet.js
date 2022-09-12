@@ -5,7 +5,8 @@ module.exports = (sequelize) => {
 		'diet',
 		{
 			name: {
-				type: DataTypes.ENUM([
+				type: DataTypes.ENUM,
+				values: [
 					'gluten free',
 					'dairy free',
 					'paleolithic',
@@ -16,10 +17,10 @@ module.exports = (sequelize) => {
 					'primal',
 					'fodmap friendly',
 					'whole 30',
-				]),
+				],
 				allowNull: false,
 			},
 		},
-		{ freezeTableName: true, timestamps: false },
+		{ freezeTableName: true, timestamps: false }
 	);
 };

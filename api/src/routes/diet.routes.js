@@ -6,6 +6,7 @@ const routerDiets = Router();
 
 routerDiets.get('/', async (_, res) => {
 	const allDiets = await Diet.findAll();
+
 	const diets = [
 		'gluten free',
 		'dairy free',
@@ -26,9 +27,10 @@ routerDiets.get('/', async (_, res) => {
 				},
 			});
 		});
-		res.send(allDiets);
+
+		return res.send(allDiets);
 	} catch (err) {
-		res.status(NOT_FOUND).send({ message: err.message });
+		return res.status(NOT_FOUND).send({ message: err.message });
 	}
 });
 

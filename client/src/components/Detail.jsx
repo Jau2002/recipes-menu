@@ -1,20 +1,8 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getRecipeDetail } from '../redux/actions';
-import { selectDetails } from '../redux/constants';
+import useDetail from '../hooks/useDetail';
 import Loader from './Loader';
 
 function Detail() {
-	const { id } = useParams();
-
-	const detail = useSelector(selectDetails);
-
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(getRecipeDetail(id));
-	}, [dispatch]);
+	const { detail } = useDetail();
 
 	return (
 		<header>

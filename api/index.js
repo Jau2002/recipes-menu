@@ -20,11 +20,13 @@
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 console.clear(); // eslint-disable-line no-console
+
 const server = require('./src/server');
 const { conn } = require('./src/db');
 
 const connection = async () => {
 	const reload = await conn.sync({ force: true });
+
 	return reload;
 };
 

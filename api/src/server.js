@@ -2,11 +2,9 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes');
-
 require('./db');
 
 const server = express();
-
 server.name = 'API';
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));

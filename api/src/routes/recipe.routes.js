@@ -13,16 +13,19 @@ const routerRecipes = Router();
 
 routerRecipes.get('/', async (req, res) => {
 	const { name } = req.query;
+
 	const recipes = await allRecipes();
 	try {
 		if (name) {
 			const filterByQuery = recipes.filter((dish) =>
-				dish.name?.toUpperCase().includes(name.toUpperCase()),
+				dish.name?.toUpperCase().includes(name.toUpperCase())
 			);
+
 			return filterByQuery.length
 				? res.send(filterByQuery)
 				: res.status(CONFLICT).send({ message: `There is ${name} no recipe` });
 		}
+
 		return res.send(recipes);
 	} catch (err) {
 		return res.status(NOT_FOUND).send({ message: err.message });
@@ -31,11 +34,13 @@ routerRecipes.get('/', async (req, res) => {
 
 routerRecipes.get('/:id', async (req, res) => {
 	const { id } = req.params;
+
 	const recipes = await allRecipes();
 	try {
 		const FilterById = recipes.filter(
-			(recipe) => recipe.id === Number.parseInt(id, 10),
+			(recipe) => recipe.id === Number.parseInt(id, 10)
 		);
+
 		return FilterById.length
 			? res.send(FilterById)
 			: res
@@ -48,6 +53,7 @@ routerRecipes.get('/:id', async (req, res) => {
 
 routerRecipes.post('/', async (req, res) => {
 	const { name, summary, healthScore, steps, img, diets } = req.body;
+
 	try {
 		const newRecipe = await Recipe.create({
 			name,
@@ -56,12 +62,14 @@ routerRecipes.post('/', async (req, res) => {
 			steps,
 			img,
 		});
+
 		const dietsDb = await Diet.findAll({
 			where: {
 				name: diets,
 			},
 		});
 		newRecipe.addDiet(dietsDb);
+
 		return res.status(CREATED).send({ message: 'Diet created successfully' });
 	} catch (err) {
 		return res.status(UNPROCESSABLE_ENTITY).send({ message: err.message });
