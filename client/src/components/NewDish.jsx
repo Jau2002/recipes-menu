@@ -11,6 +11,7 @@ function NewDish() {
 		reboot,
 		handleOnReset,
 		verify,
+		diets,
 	} = useCreate();
 
 	return (

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getAllDiets, postRecipe } from '../actions';
+import { selectDiets } from '../constants';
 
 function useCreate() {
 	const dispatch = useDispatch();
@@ -68,7 +69,7 @@ function useCreate() {
 		if (verify) {
 			dispatch(postRecipe(input));
 			alert('recipe created successfully'); // eslint-disable-line no-alert
-			navigate('/home', { replace: true });
+			navigate('/home');
 		}
 	};
 
@@ -108,6 +109,8 @@ function useCreate() {
 		input?.diets.length
 	);
 
+	const diets = useSelector(selectDiets);
+
 	return {
 		reboot,
 		handleOnReset,
@@ -118,6 +121,7 @@ function useCreate() {
 		verify,
 		errors,
 		input,
+		diets,
 	};
 }
 

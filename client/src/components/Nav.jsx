@@ -28,8 +28,12 @@ function Nav() {
 							<p type='button'>Create</p>
 						</NavLink>
 					</div>
-					<SearchBar />
-					<Select />
+					<div>
+						<SearchBar />
+					</div>
+					<div>
+						<Select />
+					</div>
 				</>
 			) : (
 				<NavLink to='/home'>

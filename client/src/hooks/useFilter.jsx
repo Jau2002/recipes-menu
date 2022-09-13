@@ -1,9 +1,19 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByDiet, filterByName, filterByScore } from '../actions';
+import {
+	filterByDiet,
+	filterByName,
+	filterByScore,
+	getAllDiets,
+} from '../actions';
 import { selectDiets } from '../constants';
 
 function useFilter() {
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getAllDiets());
+	}, [dispatch]);
 
 	const handleFilterDiets = (event) => {
 		event.preventDefault();

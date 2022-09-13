@@ -38,7 +38,7 @@ routerRecipes.get('/:id', async (req, res) => {
 	const recipes = await allRecipes();
 	try {
 		const FilterById = recipes.filter(
-			(recipe) => recipe.id === Number.parseInt(id, 10)
+			(recipe) => recipe.id === Number.parseInt(id, 10) || recipe.id === id
 		);
 
 		return FilterById.length
