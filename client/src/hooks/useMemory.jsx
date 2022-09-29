@@ -35,6 +35,7 @@ function useMemory() {
 		isActive,
 		handleOnClick,
 		allShowOnPage,
+		setCurrentPage,
 		dishes,
 	};
 }

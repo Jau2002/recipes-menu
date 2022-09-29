@@ -7,8 +7,10 @@ import {
 	getAllDiets,
 } from '../actions';
 import { selectDiets } from '../constants';
+import useMemory from './useMemory';
 
 function useFilter() {
+	const { setCurrentPage } = useMemory();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -23,11 +25,13 @@ function useFilter() {
 	const handleOrderName = (event) => {
 		event.preventDefault();
 		dispatch(filterByName(event.target.value));
+		setCurrentPage(1);
 	};
 
 	const handleOrderScore = (event) => {
 		event.preventDefault();
 		dispatch(filterByScore(event.target.value));
+		setCurrentPage(1);
 	};
 
 	const diets = useSelector(selectDiets);

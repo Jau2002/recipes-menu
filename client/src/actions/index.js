@@ -45,7 +45,11 @@ function getRecipeDetail(id) {
 
 function postRecipe(payload) {
 	return async () => {
-		const create = await axios.post('http://localhost:3001/recipes', payload);
+		try {
+			const create = await axios.post('http://localhost:3001/recipes', payload);
+		} catch (err) {
+			throw new Error(err);
+		}
 
 		return create;
 	};

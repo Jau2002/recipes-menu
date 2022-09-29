@@ -21,7 +21,7 @@ export default ({ mode }) => {
 		},
 		css: {
 			modules: {
-				localsConvention: 'camelCase',
+				localsConvention: '',
 				generateScopedName,
 			},
 		},

@@ -25,6 +25,8 @@ function useCreate() {
 
 		if (!name) {
 			message.name = 'Name is required';
+		} else if (name.length > 100) {
+			message.name = 'the name is too long';
 		}
 
 		if (!summary) {
@@ -66,10 +68,14 @@ function useCreate() {
 
 	const handleOnSubmit = (event) => {
 		event.preventDefault();
-		if (verify) {
-			dispatch(postRecipe(input));
-			alert('recipe created successfully'); // eslint-disable-line no-alert
-			navigate('/home');
+		try {
+			if (verify) {
+				dispatch(postRecipe(input));
+				alert('recipe created successfully'); // eslint-disable-line no-alert
+				navigate('/home');
+			}
+		} catch (err) {
+			alert('not found');
 		}
 	};
 

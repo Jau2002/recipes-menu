@@ -1,4 +1,5 @@
 import useMemory from '../hooks/useMemory';
+import '../styles/modules/Page.css';
 
 function Page({ handleOnClick }) {
 	const { isActive, allShowOnPage, dishes } = useMemory();
@@ -10,12 +11,12 @@ function Page({ handleOnClick }) {
 	}
 
 	return (
-		<footer>
+		<footer className='container-page'>
 			{numPages?.map((num) => (
 				<button
 					key={num}
 					type='button'
-					className={isActive === num ? 'active' : ''}
+					className={isActive === num ? 'active' : 'no-active'}
 					onClick={() => handleOnClick(num)}
 				>
 					{num}

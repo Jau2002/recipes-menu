@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom';
-import pageLanding from '../../public/page_landing.jpg';
+import '../styles/modules/Landing.css';
 
 function Landing() {
 	return (
-		<main>
-			<aside>
+		<main className='container-landing'>
+			<header className='landing'>
+				<h1 className='title-landing'>Recipes</h1>
 				<Link to='/home'>
-					<button type='button'>Menu</button>
+					<button
+						type='button'
+						className='button-landing'
+					>
+						Menu
+					</button>
 				</Link>
-			</aside>
-			<img
-				src={pageLanding}
-				alt='landing'
-			/>
+			</header>
 		</main>
 	);
 }

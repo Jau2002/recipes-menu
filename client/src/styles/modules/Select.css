@@ -1,0 +1,20 @@
+.container-select {
+	display: flex;
+	justify-content: column;
+	align-items: center;
+}
+
+.select-options {
+	font-family: 'Fredericka the Great', cursive;
+	text-decoration: none;
+	font-size: larger;
+	font-weight: bolder;
+	color: #ffffff;
+	transition: 0.4s;
+	cursor: pointer;
+	display: flex;
+	align-self: center;
+	margin-left: 60%;
+	background-color: #1a1a1a;
+	margin: 1% 7% 2% 16%;
+}

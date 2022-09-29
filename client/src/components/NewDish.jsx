@@ -1,4 +1,5 @@
 import useCreate from '../hooks/useCreate';
+import '../styles/modules/newDish.css';
 
 function NewDish() {
 	const {
@@ -15,9 +16,12 @@ function NewDish() {
 	} = useCreate();
 
 	return (
-		<address>
-			<h1>CREATE YOUR RECIPE!</h1>
-			<form onSubmit={handleOnSubmit}>
+		<address className='container-create'>
+			<h1 className='title-create'>CREATE YOUR RECIPE!</h1>
+			<form
+				onSubmit={handleOnSubmit}
+				className='container-form'
+			>
 				<div>
 					<div>
 						<label htmlFor='name'>
@@ -35,7 +39,7 @@ function NewDish() {
 								}
 							/>
 						</label>
-						{errors?.name && <span>{errors.name}</span>}
+						{errors?.name && <span className='danger'>{errors.name}</span>}
 					</div>
 					<div>
 						<label htmlFor='summary'>
@@ -53,7 +57,9 @@ function NewDish() {
 								}
 							/>
 						</label>
-						{errors?.summary && <span>{errors.summary}</span>}
+						{errors?.summary && (
+							<span className='danger'>{errors.summary}</span>
+						)}
 					</div>
 					<div>
 						<label htmlFor='img'>
@@ -72,7 +78,7 @@ function NewDish() {
 								}
 							/>
 						</label>
-						{errors?.img && <span>{errors.img}</span>}
+						{errors?.img && <span className='danger'>{errors.img}</span>}
 					</div>
 					<div>
 						<label htmlFor='steps'>
@@ -90,7 +96,7 @@ function NewDish() {
 								}
 							/>
 						</label>
-						{errors?.steps && <span>{errors.steps}</span>}
+						{errors?.steps && <span className='danger'>{errors.steps}</span>}
 					</div>
 					<div>
 						<label htmlFor='healthScore'>
@@ -135,15 +141,19 @@ function NewDish() {
 								))}
 							</ul>
 						</label>
-						{!input?.diets.length && <span>{errors.diets}</span>}
+						{!input?.diets.length && (
+							<span className='danger'>{errors.diets}</span>
+						)}
 					</div>
 					<input
+						className={!reboot ? 'button-active' : 'button-no-active'}
 						type='reset'
 						value='Reset'
 						disabled={reboot}
 						onClick={handleOnReset}
 					/>
 					<button
+						className={verify ? 'button-active' : 'button-no-active'}
 						disabled={!verify}
 						type='submit'
 					>
