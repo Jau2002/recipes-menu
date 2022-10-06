@@ -1,26 +1,27 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 :root {
-	--color-primary: #181818;
-	--color-secondary: #ececec;
+	--primary-color: #393939;
+	--secondary-color: #ececec;
 	--typography-primary: helvetica, arial, sans-serif;
-	--typography-secondary: verdana;
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-primary: #ececec;
-		--color-secondary: #181818;
+		--primary-color: #ececec;
+		--secondary-color: #393939;
 	}
 }
 @media (prefers-contrast: high) {
 	:root {
-		--color-primary: black;
-		--color-secondary: white;
+		--primary-color: #000000;
+		--secondary-color: #ffffff;
 	}
 }
 @media (prefers-reduced-motion: reduce) {
 	* {
+		-webkit-animation: none !important;
 		animation: none !important;
+		-webkit-transition: none !important;
 		transition: none !important;
 	}
 }
@@ -29,6 +30,7 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	vertical-align: baseline;
 }
@@ -41,6 +43,21 @@ figure {
 	max-width: 100%;
 	width: 100%;
 	display: block;
+	-o-object-fit: cover;
+	object-fit: cover;
+	-o-object-position: center center;
+	object-position: center center;
+}
+
+a {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	font-size: inherit;
+}
+
+p a {
+	display: inline;
 }
 
 li {
@@ -73,14 +90,6 @@ em {
 	color: inherit;
 }
 
-a {
-	display: block;
-}
-
-p a {
-	display: inline;
-}
-
 blockquote::before,
 blockquote::after,
 q::before,
@@ -89,9 +98,14 @@ q::after {
 	content: none;
 }
 
+::-moz-selection {
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+}
+
 ::selection {
-	background-color: var(--color-primary);
-	color: var(--color-secondary);
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
 }
 
 form,
@@ -102,10 +116,15 @@ button,
 label {
 	font-family: inherit;
 	font-size: inherit;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
 	hyphens: auto;
 	background-color: transparent;
 	display: block;
 	color: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 table,
@@ -118,13 +137,21 @@ td {
 svg {
 	width: 100%;
 	display: block;
+	fill: currentColor;
 }
 
 body {
 	min-height: 100vh;
 	font-size: 100%;
 	font-family: var(--typography-primary);
-	color: var(--color-primary);
-	background-color: var(--color-secondary);
-	line-height: 1.5rem;
+	color: var(--primary-color);
+	background-color: var(--secondary-color);
+	line-height: 1.5em;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	hyphens: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smooth: always;
 }
